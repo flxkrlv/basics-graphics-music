@@ -585,6 +585,7 @@ update_fpga_toolchain_var ()
         de23_lite                        | \
         emooc_cc                         | \
         omdazz*                          | \
+        picburner_ep4ce6                 | \
         piswords6                        | \
         qmtech_c4_starter                | \
         rzrd*                            | \

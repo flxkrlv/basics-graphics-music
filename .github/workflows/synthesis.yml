@@ -30,7 +30,7 @@ jobs:
           - tool: quartus
             imagerepo: ghcr.io/raetro/quartus
             imagever: 17.1
-            boards: de10_lite omdazz
+            boards: de10_lite omdazz picburner_ep4ce6
             labs: 12345
           - tool: quartus
             imagerepo: ghcr.io/raetro/quartus

@@ -13,6 +13,7 @@
 | Altera | Марсоход | marsohod_mcy316 | Cyclone III | Quartus 13.1 и старше | нет | нет |
 | Altera | OMDAZZ | omdazz | Cyclone IV E | Quartus с 13.0sp1 по 25.1std | нет | VGA + LCD |
 | Altera | OMDAZZ | omdazz_epm570 | MAX II | Quartus с 13.0sp1 по 25.1std | нет | VGA + LCD |
+| Altera | Picburner | picburner_ep4ce6 | Cyclone IV E | Quartus Prime Lite (не проверено) | всегда | VGA (только выходы) |
 | Altera | Piswords | piswords6 | Cyclone IV E | Quartus с 13.0sp1 по 25.1std | нет | VGA |
 | Altera | Terasic | c5gx | Cyclone V | Quartus с 13.0sp1 по 25.1std | нет | HDMI/DVI |
 | Altera | Terasic | de0 | Cyclone III | Quartus 13.1 и старше | нет | VGA |
