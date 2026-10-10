@@ -1,0 +1,162 @@
+# ============================================================================
+# Picburner EP4CE6E22C8N (Cyclone IV E, 144-pin LQFP) board pin assignments.
+#
+# Source: EP4CE6E22C8N_Picburner_Schematic.pdf (boards/picburner_ep4ce6/reference/) and the
+# user's table of on-board peripherals. The IO<N> net names in the schematic
+# equal the FPGA package pin numbers PIN_<N>.
+#
+# Voltage: all used banks are at 3.3 V (VCCIO1-2 = 3V3, VCCIO3-5 = VB = 3V3,
+# VCCIO6-8 = VC = 3V3). Therefore 3.3-V LVTTL is used everywhere.
+# ============================================================================
+
+set_global_assignment -name DEVICE EP4CE6E22C8
+set_global_assignment -name DEVICE_FILTER_PIN_COUNT 144
+
+set_global_assignment -name RESERVE_ALL_UNUSED_PINS_WEAK_PULLUP "AS INPUT TRI-STATED"
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to *
+
+# ---------------------------------------------------------------------------
+# On-board clock: 50 MHz oscillator (X1 on schematic, 50M = pins 24/25).
+# Pin 24 is the single-ended clock input used here.
+# ---------------------------------------------------------------------------
+
+set_location_assignment PIN_24 -to CLK
+
+# ---------------------------------------------------------------------------
+# On-board reset button K3 (active low, 3.3-V pull-up on the board).
+# ---------------------------------------------------------------------------
+
+set_location_assignment PIN_88 -to RESET
+
+# ---------------------------------------------------------------------------
+# On-board buttons K1, K2, K4, K5 (active low, 3.3-V pull-up on the board).
+# K3 is the reset button above, so it is not in KEY_SW.
+# KEY_SW[0] = K1, KEY_SW[1] = K2, KEY_SW[2] = K4, KEY_SW[3] = K5.
+# ---------------------------------------------------------------------------
+
+set_location_assignment PIN_114 -to KEY_SW[0]
+set_location_assignment PIN_89  -to KEY_SW[1]
+set_location_assignment PIN_80  -to KEY_SW[2]
+set_location_assignment PIN_73  -to KEY_SW[3]
+
+# ---------------------------------------------------------------------------
+# On-board LEDs DL1..DL5. LEDs are ACTIVE LOW: logic 0 lights them up.
+# LED[0] = DL1, LED[1] = DL2, LED[2] = DL3, LED[3] = DL4, LED[4] = DL5.
+# ---------------------------------------------------------------------------
+
+set_location_assignment PIN_1  -to LED[0]
+set_location_assignment PIN_2  -to LED[1]
+set_location_assignment PIN_3  -to LED[2]
+set_location_assignment PIN_7  -to LED[3]
+set_location_assignment PIN_11 -to LED[4]
+
+# ---------------------------------------------------------------------------
+# On-board USB-UART bridge CH340C.
+# UART_TXD: FPGA output -> CH340C RX (PIN_10).
+# UART_RXD: CH340C TX -> FPGA input (PIN_23).
+# ---------------------------------------------------------------------------
+
+set_location_assignment PIN_10 -to UART_TXD
+set_location_assignment PIN_23 -to UART_RXD
+
+# ---------------------------------------------------------------------------
+# On-board SPI flash W25Q64 (CS 87, MISO 84, MOSI 74, SCK 75).
+# RESERVED: the labs do not use the flash. Do not assign these pins for
+# other functions unless you do not need the flash.
+# ---------------------------------------------------------------------------
+
+# set_location_assignment PIN_87 -to FLASH_CS_N
+# set_location_assignment PIN_84 -to FLASH_MISO
+# set_location_assignment PIN_74 -to FLASH_MOSI
+# set_location_assignment PIN_75 -to FLASH_SCK
+
+# ---------------------------------------------------------------------------
+# Header P2 (2 x 12, 2.54 mm). Left column = odd pins, right column = even.
+# Pin numbers on the header are in brackets [..]. See the header table in
+# board_specific_top.sv and README.md for the wiring of each signal.
+#
+# TM1638 (LED & key module):  P2[14] = IO28 (STB), P2[15] = IO30 (CLK),
+#                             P2[19] = IO34 (DIO).
+#
+# VGA (outputs only, the DAC is the user's job):
+#   VGA_HSYNC = P2[1]  IO105   VGA_VSYNC = P2[3]  IO103
+#   VGA_R[0..3] = P2[5] IO100, P2[7] IO98, P2[9] IO85, P2[11] IO77
+#   VGA_G[0..3] = P2[13] IO76, P2[17] IO32, P2[2] IO106, P2[4] IO104
+#   VGA_B[0..3] = P2[6] IO101, P2[8] IO99, P2[10] IO86, P2[12] IO83
+# ---------------------------------------------------------------------------
+
+set_location_assignment PIN_28  -to TM_STB
+set_location_assignment PIN_30  -to TM_CLK
+set_location_assignment PIN_34  -to TM_DIO
+
+set_location_assignment PIN_105 -to VGA_HSYNC
+set_location_assignment PIN_103 -to VGA_VSYNC
+
+set_location_assignment PIN_100 -to VGA_R[0]
+set_location_assignment PIN_98  -to VGA_R[1]
+set_location_assignment PIN_85  -to VGA_R[2]
+set_location_assignment PIN_77  -to VGA_R[3]
+
+set_location_assignment PIN_76  -to VGA_G[0]
+set_location_assignment PIN_32  -to VGA_G[1]
+set_location_assignment PIN_106 -to VGA_G[2]
+set_location_assignment PIN_104 -to VGA_G[3]
+
+set_location_assignment PIN_101 -to VGA_B[0]
+set_location_assignment PIN_99  -to VGA_B[1]
+set_location_assignment PIN_86  -to VGA_B[2]
+set_location_assignment PIN_83  -to VGA_B[3]
+
+# ---------------------------------------------------------------------------
+# Header P4 (2 x 23). Left column = odd pins, right column = even pins.
+#
+# INMP441 microphone (I2S, FPGA receives data):
+#   MIC_LR  = P4[9]  IO39   (driven 0 = left channel)
+#   MIC_WS  = P4[11] IO43   (word select / LRCLK)
+#   MIC_SCK = P4[13] IO46   (bit clock)
+#   MIC_SD  = P4[15] IO50   (serial data from the mic)
+#
+# PCM5102 DAC (I2S, FPGA sends data):
+#   DAC_BCK  = P4[10] IO38  (bit clock)
+#   DAC_LRCK = P4[12] IO42  (word clock)
+#   DAC_DIN  = P4[14] IO44  (serial data to the DAC)
+# ---------------------------------------------------------------------------
+
+set_location_assignment PIN_39 -to MIC_LR
+set_location_assignment PIN_43 -to MIC_WS
+set_location_assignment PIN_46 -to MIC_SCK
+set_location_assignment PIN_50 -to MIC_SD
+
+set_location_assignment PIN_38 -to DAC_BCK
+set_location_assignment PIN_42 -to DAC_LRCK
+set_location_assignment PIN_44 -to DAC_DIN
+
+# ---------------------------------------------------------------------------
+# Header P3 (2 x 23): general-purpose I/O (free, nothing is wired to it).
+# GPIO[0] = IO110 ... GPIO[23] = IO144, ascending by pin number.
+# ---------------------------------------------------------------------------
+
+set_location_assignment PIN_110 -to GPIO[0]
+set_location_assignment PIN_111 -to GPIO[1]
+set_location_assignment PIN_112 -to GPIO[2]
+set_location_assignment PIN_113 -to GPIO[3]
+set_location_assignment PIN_115 -to GPIO[4]
+set_location_assignment PIN_119 -to GPIO[5]
+set_location_assignment PIN_120 -to GPIO[6]
+set_location_assignment PIN_121 -to GPIO[7]
+set_location_assignment PIN_124 -to GPIO[8]
+set_location_assignment PIN_125 -to GPIO[9]
+set_location_assignment PIN_126 -to GPIO[10]
+set_location_assignment PIN_127 -to GPIO[11]
+set_location_assignment PIN_128 -to GPIO[12]
+set_location_assignment PIN_129 -to GPIO[13]
+set_location_assignment PIN_132 -to GPIO[14]
+set_location_assignment PIN_133 -to GPIO[15]
+set_location_assignment PIN_135 -to GPIO[16]
+set_location_assignment PIN_136 -to GPIO[17]
+set_location_assignment PIN_137 -to GPIO[18]
+set_location_assignment PIN_138 -to GPIO[19]
+set_location_assignment PIN_141 -to GPIO[20]
+set_location_assignment PIN_142 -to GPIO[21]
+set_location_assignment PIN_143 -to GPIO[22]
+set_location_assignment PIN_144 -to GPIO[23]

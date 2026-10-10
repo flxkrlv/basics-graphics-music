@@ -131,6 +131,7 @@ Your contributions are welcome.
 | Altera Cyclone III | Terasic DE0          | [`de0`](./boards/de0/)                               | [Intel Quartus Prime Lite](./docs/IntelQuartus.md) |
 | Altera Cyclone III | Altera DK-DEV-3C120N | [`dk_dev_3c120n`](./boards/dk_dev_3c120n/)           | [Intel Quartus Prime Lite](./docs/IntelQuartus.md) |
 | Altera Cyclone IV  | Alinx AX4010         | [`alinx_ax4010`](./boards/alinx_ax4010/)             | [Intel Quartus Prime Lite](./docs/IntelQuartus.md) |
+| Altera Cyclone IV  | Picburner EP4CE6E22C8N | [`picburner_ep4ce6`](./boards/picburner_ep4ce6/) | [Intel Quartus Prime Lite](./docs/IntelQuartus.md) |
 | Altera Cyclone IV  | Terasic DE0-Nano     | [`de0_nano_vga_pmod`](./boards/de0_nano_vga_pmod/) <br/> [`de0_nano_vga666`](./boards/de0_nano_vga666/) | [Intel Quartus Prime Lite](./docs/IntelQuartus.md) |
 | Altera Cyclone IV  | Zeowaa               | [`zeowaa`](./boards/zeowaa/) <br/> [`zeowaa_wo_dig_0`](./boards/zeowaa_wo_dig_0/) |                                                    |
 | Altera Cyclone IV  | Terasic DE2-115      | [`de2_115`](./boards/de2_115/)                       | [Intel Quartus Prime Lite](./docs/IntelQuartus.md) |

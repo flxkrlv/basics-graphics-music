@@ -13,6 +13,7 @@ Versions probed: 13.0sp1, 13.1 and 25.1std under the home directory, 21.1 under 
 | Altera | Marsohod | marsohod_mcy316 | Cyclone III | Quartus 13.1 and older | never | none |
 | Altera | OMDAZZ | omdazz | Cyclone IV E | Quartus 13.0sp1 through 25.1std | never | VGA + LCD |
 | Altera | OMDAZZ | omdazz_epm570 | MAX II | Quartus 13.0sp1 through 25.1std | never | VGA + LCD |
+| Altera | Picburner | picburner_ep4ce6 | Cyclone IV E | Quartus Prime Lite (not measured) | always | VGA (outputs only) |
 | Altera | Piswords | piswords6 | Cyclone IV E | Quartus 13.0sp1 through 25.1std | never | VGA |
 | Altera | Terasic | c5gx | Cyclone V | Quartus 13.0sp1 through 25.1std | never | HDMI/DVI |
 | Altera | Terasic | de0 | Cyclone III | Quartus 13.1 and older | never | VGA |
