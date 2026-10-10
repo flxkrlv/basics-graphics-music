@@ -1,7 +1,5 @@
 # Picburner EP4CE6E22C8N (минимальная плата Cyclone IV E)
 
-Подробная распиновка и схема подключения по разъёмам: [WIRING.md](./WIRING.md) (PDF: [WIRING.pdf](./WIRING.pdf)).
-
 Плата на микросхеме Altera (Intel) Cyclone IV E `EP4CE6E22C8N` (144-pin LQFP,
 6272 LE, 50 МГц генератор). Имя конфигурации: `picburner_ep4ce6`.
 Тулчейн: Intel Quartus Prime Lite.
